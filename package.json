@@ -1,12 +1,21 @@
 {
-  "name": "igniteNode",
-  "version": "1.0.0",
-  "main": "index.js",
-  "repository": "https://github.com/Manfrin92/igniteNode.git",
-  "author": "Manfrin92 <manfredd_10@hotmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "express": "^4.17.1",
-    "uuid": "^8.3.2"
-  }
+    "name": "igniteNode",
+    "version": "1.0.0",
+    "main": "index.js",
+    "repository": "https://github.com/Manfrin92/igniteNode.git",
+    "author": "Manfrin <felipe.k.manfrin@exxonmobil.com>",
+    "license": "MIT",
+    "scripts": {
+        "dev": "ts-node-dev --transpile-only --ignore-watch node_modules --respawn src/server.ts"
+    },
+    "dependencies": {
+        "express": "^4.17.3"
+    },
+    "devDependencies": {
+        "@types/express": "^4.17.13",
+        "eslint": "^8.9.0",
+        "prettier": "^2.5.1",
+        "typescript": "^4.5.5",
+        "ts-node-dev": "^1.1.8"
+    }
 }
