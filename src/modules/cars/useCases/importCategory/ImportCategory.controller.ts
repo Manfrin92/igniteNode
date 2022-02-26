@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import { ImportCategoryUseCase } from "./importCategoryUseCase";
+import { ImportCategoryUseCase } from "./ImportCategoryUseCase";
 
 class ImportCategoryController {
     constructor(private importCategoryUserCase: ImportCategoryUseCase) {}
 
     handle(request: Request, response: Response) {
-        const { file } = request.body;
+        const file = request.file;
 
         this.importCategoryUserCase.execute(file);
 
