@@ -15,3 +15,9 @@
 `docker exec -it nameOrId /bin/bash`
 
 `docker logs nameOrId -f`
+
+### Recreating
+`docker-compose up --force-recreate`
+
+### Getting ip address
+`docker exec nameOfContainer cat /etc/hosts`
