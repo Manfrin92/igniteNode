@@ -1,5 +1,4 @@
-import { CategoryRepository } from "../../repositories/implementations/Category.repository";
-import { ICategoryRepository } from "../../repositories/ICategory.repository";
+import { ICategoriesRepository } from "../../repositories/ICategories.repository";
 
 interface IRequest {
     name: string;
@@ -7,14 +6,15 @@ interface IRequest {
 }
 
 class CreateCategoryUseCase {
-    constructor(private categoriesRepository: ICategoryRepository) {}
+    constructor(private categoriesRepository: ICategoriesRepository) {}
 
-    execute({ description, name }: IRequest): void {
+    async execute({ description, name }: IRequest): Promise<void> {
         const isCategoryAlreadyRegistered =
-            this.categoriesRepository.findByName(name);
+            await this.categoriesRepository.findByName(name);
 
         if (isCategoryAlreadyRegistered) {
-            throw new Error("Category already exists");
+            console.log("Category already exists");
+            return;
         }
 
         this.categoriesRepository.create({
