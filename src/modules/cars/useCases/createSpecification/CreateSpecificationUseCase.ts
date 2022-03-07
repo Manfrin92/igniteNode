@@ -1,14 +1,19 @@
-import { ISpecificationRepository } from "../../repositories/ISpecification.repository";
+import { inject, injectable } from "tsyringe";
+import { ISpecificationsRepository } from "../../repositories/ISpecifications.repository";
 
 interface IRequest {
     name: string;
     description: string;
 }
 
+@injectable()
 class CreateSpecificationUseCase {
-    constructor(private specificationRepository: ISpecificationRepository) {}
+    constructor(
+        @inject("SpecificationsRepository")
+        private specificationRepository: ISpecificationsRepository
+    ) {}
 
-    execute({ description, name }: IRequest) {
+    async execute({ description, name }: IRequest): Promise<void> {
         const specificationAlreadyRegistered =
             this.specificationRepository.findByName(name);
 
@@ -16,7 +21,7 @@ class CreateSpecificationUseCase {
             throw new Error("Specification already registered");
         }
 
-        this.specificationRepository.create({ name, description });
+        await this.specificationRepository.create({ name, description });
     }
 }
 

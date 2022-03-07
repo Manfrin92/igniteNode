@@ -23,7 +23,7 @@ class CreateCategoryUseCase {
             return;
         }
 
-        this.categoriesRepository.create({
+        await this.categoriesRepository.create({
             description,
             name,
         });
