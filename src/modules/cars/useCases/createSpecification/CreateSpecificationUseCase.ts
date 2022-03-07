@@ -15,7 +15,7 @@ class CreateSpecificationUseCase {
 
     async execute({ description, name }: IRequest): Promise<void> {
         const specificationAlreadyRegistered =
-            this.specificationRepository.findByName(name);
+            await this.specificationRepository.findByName(name);
 
         if (specificationAlreadyRegistered) {
             throw new Error("Specification already registered");
